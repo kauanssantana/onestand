@@ -1,26 +1,304 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* =========================================
+   DESIGN TOKENS (Baseado no Design System)
+========================================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cores */
+  --color-primary: #e6392b; /* */
+  --color-primary-hover: #c93025; /*[cite: 2] */
+  --color-secondary: #f5a623; /*[cite: 2] */
+
+  --color-bg-dark: #3a1010; /*[cite: 2] */
+  --color-bg-light: #f9f6f0; /*[cite: 2] */
+  --color-surface: #f3efe6; /*[cite: 2] */
+
+  --color-text-dark: #2c2c2c; /*[cite: 2] */
+  --color-text-muted: #666666; /*[cite: 2] */
+  --color-text-light: #ffffff; /*[cite: 2] */
+
+  /* Border Radius */
+  --radius-sm: 4px; /*[cite: 2] */
+  --radius-md: 8px; /*[cite: 2] */
+  --radius-lg: 16px; /*[cite: 2] */
+  --radius-pill: 999px; /*[cite: 2] */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-light); /*[cite: 2] */
+  color: var(--color-text-dark); /*[cite: 2] */
+  font-family:
+    var(--font-inter), sans-serif; /* Fonte base de leitura[cite: 2] */
+}
+
+/* Títulos usarão Montserrat por padrão[cite: 2] */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* =========================================
+   ESTILOS DO HEADER
+========================================= */
+
+.header {
+  background-color: var(--color-bg-dark); /* Fundo de alto impacto[cite: 2] */
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.header-logo a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.85;
+}
+
+.logo-one {
+  color: var(--color-secondary); /* Amarelo da marca */
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+}
+
+.logo-stand {
+  color: var(--color-text-light); /* Branco[cite: 2] */
+  font-size: 1.5rem;
+  font-family:
+    "Brush Script MT", cursive; /* Substitua por uma fonte script real se desejar[cite: 2] */
+  margin-left: 0.5rem;
+}
+
+/* Navegação */
+.header-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-nav {
+    display: block;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 24px; /* Espaçamento md do grid[cite: 2] */
+}
+
+.nav-link {
+  color: var(--color-text-light); /*[cite: 2] */
+  text-decoration: none;
+  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+  font-weight: 600;
+  font-size: 16px; /*[cite: 2] */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-secondary);
+}
+
+/* Botão Secundário (Navbar) baseado no Design System[cite: 2] */
+.btn-secondary {
+  background-color: var(--color-secondary); /*[cite: 2] */
+  color: var(--color-text-dark); /*[cite: 2] */
+  padding: 10px 24px; /*[cite: 2] */
+  border-radius: var(--radius-md); /* 8px[cite: 2] */
+  text-decoration: none;
+  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+  font-weight: 700;
+  font-size: 16px; /*[cite: 2] */
+  transition: all 0.2s ease-in-out; /* Motion sugerido[cite: 2] */
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05); /*[cite: 2] */
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+  /* Gradiente do fundo escuro[cite: 2] */
+  background: linear-gradient(180deg, #4a1515 0%, #1a0505 100%);
+  color: var(--color-text-light);
+  padding: 80px 0 160px 0; /* Espaço extra embaixo para o brush */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .hero-content {
+    flex: 1;
+    z-index: 10;
+  }
+  .hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+/* Tipografia Display[cite: 2] */
+.hero-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(48px, 6vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.hero-subtitle {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Primary CTA Button (Pill Shape & Vermelho)[cite: 2] */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 12px 32px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+/* Placeholder para a Imagem do Produto */
+.hero-placeholder-image {
+  width: 350px;
+  height: 350px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+/* Imagem monumental flutuante[cite: 2] */
+.hero-image {
+  filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.5));
+  transform: translateY(0);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Divisão Orgânica (Brush/Torn Paper)[cite: 2] */
+.hero-brush-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--color-bg-light);
+  /* Fallback em CSS puro gerando picos pontiagudos. O ideal é usar um background-image com um SVG rasgado */
+  clip-path: polygon(
+    0% 100%,
+    100% 100%,
+    100% 80%,
+    95% 20%,
+    90% 80%,
+    85% 30%,
+    80% 90%,
+    75% 20%,
+    70% 85%,
+    65% 10%,
+    60% 70%,
+    55% 20%,
+    50% 90%,
+    45% 15%,
+    40% 80%,
+    35% 25%,
+    30% 95%,
+    25% 10%,
+    20% 75%,
+    15% 30%,
+    10% 85%,
+    5% 15%,
+    0% 90%
+  );
 }
