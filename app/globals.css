@@ -539,59 +539,66 @@ h6 {
    ESTILOS DA SEÇÃO DE DELIVERY
 ========================================= */
 .delivery-section {
-  padding: 80px 0;
-  background-color: var(--color-surface);
+  padding: 100px 0;
+  background-color: var(--color-bg-dark);
 }
 
 .delivery-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  text-align: center;
 }
 
 .delivery-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
-  max-width: 800px;
+  gap: 32px; /* Aumentei levemente o espaço entre os cards */
   margin: 40px auto 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .delivery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .delivery-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .delivery-card {
   background-color: var(--color-text-light);
   border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-surface);
+  padding: 32px; /* Aumentei o padding interno do cartão para dar mais respiro às letras maiores */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
 }
 
+.delivery-card:hover {
+  box-shadow: 0px 12px 30px rgba(245, 166, 35, 0.2);
+}
+
+/* --- MUDANÇA AQUI: TÍTULOS MAIORES E MAIS FORTES --- */
 .delivery-card h3 {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-text-dark);
-  margin-bottom: 8px;
+  font-size: 26px; /* AUMENTADO de 20px para 26px */
+  font-weight: 800; /* Extra bold */
+  color: #1f2937; /* Cinza quase preto para máximo contraste */
+  margin-bottom: 12px;
 }
 
+/* --- MUDANÇA AQUI: DESCRIÇÕES MAIORES --- */
 .delivery-card p {
   font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
-  color: var(--color-text-muted);
-  margin-bottom: 24px;
-  line-height: 1.5;
+  font-size: 17px; /* AUMENTADO de 14px para 17px */
+  color: #4b5563; /* Cinza escuro, muito mais fácil de ler que o anterior */
+  margin-bottom: 32px;
+  line-height: 1.6;
 }
-
 /* =========================================
    ESTILOS DA SEÇÃO DE AVALIAÇÕES
 ========================================= */
