@@ -1,29 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* =========================================
    DESIGN TOKENS (Baseado no Design System)
 ========================================= */
 :root {
   /* Cores */
-  --color-primary: #e6392b; /* */
-  --color-primary-hover: #c93025; /*[cite: 2] */
-  --color-secondary: #f5a623; /*[cite: 2] */
+  --color-primary: #e6392b;
+  --color-primary-hover: #c93025;
+  --color-secondary: #f5a623;
 
-  --color-bg-dark: #3a1010; /*[cite: 2] */
-  --color-bg-light: #f9f6f0; /*[cite: 2] */
-  --color-surface: #f3efe6; /*[cite: 2] */
+  --color-bg-dark: #3a1010;
+  --color-bg-light: #f9f6f0;
+  --color-surface: #f3efe6;
 
-  --color-text-dark: #2c2c2c; /*[cite: 2] */
-  --color-text-muted: #666666; /*[cite: 2] */
-  --color-text-light: #ffffff; /*[cite: 2] */
+  --color-text-dark: #2c2c2c;
+  --color-text-muted: #666666;
+  --color-text-light: #ffffff;
 
   /* Border Radius */
-  --radius-sm: 4px; /*[cite: 2] */
-  --radius-md: 8px; /*[cite: 2] */
-  --radius-lg: 16px; /*[cite: 2] */
-  --radius-pill: 999px; /*[cite: 2] */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
 }
 
 /* Reset básico */
@@ -34,13 +32,12 @@
 }
 
 body {
-  background-color: var(--color-bg-light); /*[cite: 2] */
-  color: var(--color-text-dark); /*[cite: 2] */
-  font-family:
-    var(--font-inter), sans-serif; /* Fonte base de leitura[cite: 2] */
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  font-family: var(--font-inter), sans-serif;
 }
 
-/* Títulos usarão Montserrat por padrão[cite: 2] */
+/* Títulos usarão Montserrat por padrão */
 h1,
 h2,
 h3,
@@ -53,9 +50,8 @@ h6 {
 /* =========================================
    ESTILOS DO HEADER
 ========================================= */
-
 .header {
-  background-color: var(--color-bg-dark); /* Fundo de alto impacto[cite: 2] */
+  background-color: var(--color-bg-dark);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -72,7 +68,6 @@ h6 {
   align-items: center;
 }
 
-/* Logo */
 .header-logo a {
   text-decoration: none;
   display: inline-block;
@@ -85,22 +80,20 @@ h6 {
 }
 
 .logo-one {
-  color: var(--color-secondary); /* Amarelo da marca */
+  color: var(--color-secondary);
   font-size: 2.2rem;
   font-weight: 900;
   text-transform: uppercase;
-  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 .logo-stand {
-  color: var(--color-text-light); /* Branco[cite: 2] */
+  color: var(--color-text-light);
   font-size: 1.5rem;
-  font-family:
-    "Brush Script MT", cursive; /* Substitua por uma fonte script real se desejar[cite: 2] */
+  font-family: "Brush Script MT", cursive;
   margin-left: 0.5rem;
 }
 
-/* Navegação */
 .header-nav {
   display: none;
 }
@@ -114,15 +107,15 @@ h6 {
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 24px; /* Espaçamento md do grid[cite: 2] */
+  gap: 24px;
 }
 
 .nav-link {
-  color: var(--color-text-light); /*[cite: 2] */
+  color: var(--color-text-light);
   text-decoration: none;
-  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 600;
-  font-size: 16px; /*[cite: 2] */
+  font-size: 16px;
   transition: color 0.3s ease;
 }
 
@@ -130,35 +123,56 @@ h6 {
   color: var(--color-secondary);
 }
 
-/* Botão Secundário (Navbar) baseado no Design System[cite: 2] */
 .btn-secondary {
-  background-color: var(--color-secondary); /*[cite: 2] */
-  color: var(--color-text-dark); /*[cite: 2] */
-  padding: 10px 24px; /*[cite: 2] */
-  border-radius: var(--radius-md); /* 8px[cite: 2] */
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  font-family: var(--font-montserrat), sans-serif; /*[cite: 2] */
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 700;
-  font-size: 16px; /*[cite: 2] */
-  transition: all 0.2s ease-in-out; /* Motion sugerido[cite: 2] */
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
   display: inline-block;
 }
 
 .btn-secondary:hover {
-  transform: scale(1.05); /*[cite: 2] */
+  transform: scale(1.05);
 }
 
 /* =========================================
-   HERO SECTION
+   VÍDEO DE FUNDO E OVERLAY DO HERO
 ========================================= */
-
 .hero {
-  /* Gradiente do fundo escuro[cite: 2] */
-  background: linear-gradient(180deg, #4a1515 0%, #1a0505 100%);
-  color: var(--color-text-light);
-  padding: 80px 0 160px 0; /* Espaço extra embaixo para o brush */
   position: relative;
   overflow: hidden;
+  background: none;
+  color: var(--color-text-light);
+  padding: 80px 0 160px 0;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(74, 21, 21, 0.88) 0%,
+    rgba(26, 5, 5, 0.92) 100%
+  );
+  z-index: 1;
 }
 
 .hero-container {
@@ -169,6 +183,8 @@ h6 {
   flex-direction: column;
   align-items: center;
   gap: 48px;
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -189,7 +205,6 @@ h6 {
   }
 }
 
-/* Tipografia Display[cite: 2] */
 .hero-title {
   font-family: var(--font-montserrat), sans-serif;
   font-size: clamp(48px, 6vw, 64px);
@@ -212,7 +227,6 @@ h6 {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Primary CTA Button (Pill Shape & Vermelho)[cite: 2] */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-text-light);
@@ -233,22 +247,6 @@ h6 {
   transform: scale(1.05);
 }
 
-/* Placeholder para a Imagem do Produto */
-.hero-placeholder-image {
-  width: 350px;
-  height: 350px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 2px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
-}
-
-/* Imagem monumental flutuante[cite: 2] */
 .hero-image {
   filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.5));
   transform: translateY(0);
@@ -267,38 +265,577 @@ h6 {
   }
 }
 
-/* Divisão Orgânica (Brush/Torn Paper)[cite: 2] */
 .hero-brush-divider {
   position: absolute;
-  bottom: -1px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  background-color: var(--color-bg-light);
-  /* Fallback em CSS puro gerando picos pontiagudos. O ideal é usar um background-image com um SVG rasgado */
-  clip-path: polygon(
-    0% 100%,
-    100% 100%,
-    100% 80%,
-    95% 20%,
-    90% 80%,
-    85% 30%,
-    80% 90%,
-    75% 20%,
-    70% 85%,
-    65% 10%,
-    60% 70%,
-    55% 20%,
-    50% 90%,
-    45% 15%,
-    40% 80%,
-    35% 25%,
-    30% 95%,
-    25% 10%,
-    20% 75%,
-    15% 30%,
-    10% 85%,
-    5% 15%,
-    0% 90%
+  line-height: 0;
+  z-index: 3;
+}
+
+.hero-brush-divider svg {
+  width: 100%;
+  height: 50px;
+  display: block;
+}
+
+.center-carousel {
+  --slide-width: 90%;
+  --offset: 5%;
+  transform: translateX(
+    calc(-1 * var(--current-index) * var(--slide-width) + var(--offset))
   );
+}
+
+@media (min-width: 768px) {
+  .center-carousel {
+    --slide-width: 80%;
+    --offset: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .center-carousel {
+    --slide-width: 75%;
+    --offset: 12.5%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .center-carousel {
+    --slide-width: 65%;
+    --offset: 17.5%;
+  }
+}
+/* =========================================
+   ESTILOS DA SEÇÃO SOBRE / DIFERENCIAIS
+========================================= */
+
+.about-section {
+  padding: 100px 0;
+  background-color: var(--color-bg-dark); /* Fundo escuro #3A1010 */
+  color: var(--color-text-light); /* Texto branco */
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-badge {
+  background-color: rgba(245, 166, 35, 0.15);
+  color: var(--color-secondary); /* Amarelo */
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.about-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--color-text-light);
+}
+
+.about-desc {
+  font-family: var(--font-inter), sans-serif;
+  color: rgba(255, 255, 255, 0.85); /* Branco levemente translúcido */
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.about-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+.about-alert {
+  background-color: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+}
+
+.about-alert p {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+.about-image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image-wrapper {
+  width: 100%;
+  max-width: 450px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(245, 166, 35, 0.3);
+}
+
+.about-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+/* =========================================
+   ESTILOS DA SEÇÃO DE CARDÁPIO
+========================================= */
+.menu-section {
+  padding: 80px 0;
+  background-color: var(--color-bg-light);
+}
+
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.menu-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.menu-badge {
+  background-color: rgba(230, 57, 43, 0.1);
+  color: var(--color-primary);
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.menu-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+}
+
+.menu-subtitle {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  margin-top: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.menu-card {
+  background-color: var(--color-text-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card-image {
+  height: 220px;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.menu-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.menu-card:hover .menu-card-image img {
+  transform: scale(1.08);
+}
+
+.menu-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.menu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.menu-card-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.menu-card-price {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.menu-card-desc {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.menu-footer-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* =========================================
+   ESTILOS DA SEÇÃO DE DELIVERY
+========================================= */
+.delivery-section {
+  padding: 80px 0;
+  background-color: var(--color-surface);
+}
+
+.delivery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+}
+
+@media (min-width: 768px) {
+  .delivery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.delivery-card {
+  background-color: var(--color-text-light);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.delivery-card h3 {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.delivery-card p {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   ESTILOS DA SEÇÃO DE AVALIAÇÕES
+========================================= */
+.reviews-section {
+  padding: 80px 0;
+  background-color: var(--color-bg-light);
+}
+
+.reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card {
+  background-color: var(--color-text-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: var(--color-text-dark);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.review-stars {
+  color: #f5a623;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+}
+
+.review-author {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+/* =========================================
+   ESTILOS DA SEÇÃO DE LOCALIZAÇÃO
+========================================= */
+.location-section {
+  padding: 80px 0;
+  background-color: var(--color-surface);
+}
+
+.location-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media (min-width: 1024px) {
+  .location-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.location-desc {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-inter), sans-serif;
+  color: var(--color-text-dark);
+  font-size: 15px;
+}
+
+.location-map-box {
+  flex: 1;
+  width: 100%;
+  height: 350px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-surface);
+}
+
+/* =========================================
+   ESTILOS DO RODAPÉ (FOOTER)
+========================================= */
+.footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: 64px 0 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-col h3 {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.footer-col h4 {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.footer-col p {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-link {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-secondary);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 48px auto 0 auto;
+  padding: 24px 24px 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
 }
