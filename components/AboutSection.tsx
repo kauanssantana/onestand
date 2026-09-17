@@ -9,7 +9,7 @@ export default function AboutSection() {
           <span className="about-badge">Inovação One Stand</span>
           <h2 className="about-title">
             Aqui o seu pedido pode chegar à mesa levado por um{" "}
-            <span className="text-secondary">robô</span>.
+            <span className="text-secondary">robô</span>
           </h2>
           <p className="about-desc">
             Não é truque de vitrine, é como a gente atende todos os dias. A One

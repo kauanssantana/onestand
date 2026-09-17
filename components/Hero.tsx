@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { siteData } from "../lib/data";
 
 export default function Hero() {
@@ -39,22 +38,13 @@ export default function Hero() {
 
         {/* Área da Imagem Monumental */}
         <div className="hero-image-wrapper">
-          <Image
+          <img
             src="/img/burguer-hero.png"
             alt="Hambúrguer One Stand"
-            width={600}
-            height={600}
             className="hero-image"
-            priority
+            style={{ width: "100%", maxWidth: "600px", height: "auto" }}
           />
         </div>
-      </div>
-
-      {/* Divisor em Ondas Suaves (substituindo os picos pontiagudos) */}
-      <div className="hero-brush-divider">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#f9f6f0">
-          <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
-        </svg>
       </div>
     </section>
   );
