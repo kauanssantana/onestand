@@ -15,6 +15,8 @@ const banners: Banner[] = [
   { id: 2, image: "/img/banner-2.png", alt: "Destaque 2" },
   { id: 3, image: "/img/banner-3.png", alt: "Destaque 3" },
   { id: 4, image: "/img/banner-4.png", alt: "Destaque 4" },
+  { id: 5, image: "/img/banner-5.png", alt: "Destaque 5" },
+  { id: 6, image: "/img/banner-6.png", alt: "Destaque 6" },
 ];
 
 const extendedBanners: Banner[] = [
@@ -97,7 +99,6 @@ export default function BannerCarousel() {
         <source src="/video/menu-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ERRO CORRIGIDO AQUI: viewportRef removido */}
       <div className="carousel-container group w-full">
         <button
           className="carousel-btn prev"
@@ -117,7 +118,7 @@ export default function BannerCarousel() {
 
         <div className="carousel-track-wrapper">
           <div
-            className="carousel-track"
+            className="carousel-track items-center"
             onTransitionEnd={handleTransitionEnd}
             style={{
               transform: `translateX(${translateX}px)`,
@@ -132,11 +133,14 @@ export default function BannerCarousel() {
                 ref={index === FIRST_REAL_INDEX ? firstSlideRef : undefined}
                 className="carousel-slide"
               >
-                <img
-                  src={banner.image}
-                  alt={banner.alt}
-                  className="carousel-banner-img"
-                />
+                {/* Removido o h-full para a imagem ditar a altura natural */}
+                <div className="w-full rounded-2xl overflow-hidden shadow-xl bg-[#EA7611] flex items-center justify-center">
+                  <img
+                    src={banner.image}
+                    alt={banner.alt}
+                    className="carousel-banner-img"
+                  />
+                </div>
               </div>
             ))}
           </div>

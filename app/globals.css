@@ -148,8 +148,10 @@ h6 {
   overflow: hidden;
   background: none;
   color: var(--color-text-light);
-  /* Padding ajustado para ficar reto e simétrico: 100px no topo e 100px na base */
-  padding: 100px 0;
+  padding: 140px 0;
+  min-height: 68vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero-video-bg {
@@ -996,12 +998,12 @@ h6 {
 
 .carousel-container {
   /* AUMENTADO: de 1200px para 1400px para os banners ficarem maiores */
-  max-width: 1400px;
+  max-width: 95%;
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  /* AUMENTADO: de 40px para 80px para dar um espaço enorme entre as imagens e os botões */
-  padding: 0 80px;
+  /* Espaço exato para abrigar os botões de navegação marrons nas laterais */
+  padding: 0 70px;
 }
 
 .carousel-track-wrapper {
