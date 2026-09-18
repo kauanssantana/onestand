@@ -23,7 +23,7 @@ export default function MenuSection() {
         <div className="menu-header">
           <span className="menu-badge">Grelhado na Brasa</span>
           <h2 className="menu-title text-one-textDark">
-            Nosso <span className="text-one-secondary">Cardápio</span>
+            Nosso <span className="text-secondary">cardápio</span>
           </h2>
           <p className="menu-subtitle text-one-textMuted">
             Hambúrgueres artesanais feitos com ingredientes selecionados.

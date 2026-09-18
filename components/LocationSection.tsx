@@ -5,7 +5,6 @@ export default function LocationSection() {
     <section className="location-section" id="contato">
       <div className="location-container">
         <div className="location-info">
-          <span className="menu-badge">Venha nos visitar</span>
           <h2 className="location-title">
             Onde <span className="text-secondary">Estamos</span>
           </h2>
@@ -13,13 +12,36 @@ export default function LocationSection() {
             Estamos localizados no Grajaú, São Paulo - SP. Traga a família para
             conhecer o nosso espaço com atendimento robótico e área kids!
           </p>
+
+          {/* Detalhes de Morada e Horários - Agora sem emojis e com letras maiores */}
           <div className="location-details">
-            <p>
-              <strong>📍 Endereço:</strong> Grajaú, São Paulo - SP
+            <p className="mb-4">
+              <strong className="text-secondary text-2xl block mb-1">
+                Endereço:
+              </strong>
+              R. Jequirituba, 1510 - Parque America, São Paulo - SP, 04822-000
             </p>
-            <p>
-              <strong>⏰ Horário:</strong> Terça a Domingo, das 18h às 23h
-            </p>
+
+            <div className="mt-8">
+              <strong className="text-secondary text-2xl block mb-2">
+                Horário de Funcionamento:
+              </strong>
+              {/* list-none tira as bolinhas, space-y-2 dá respiro entre os dias */}
+              <ul className="mt-3 space-y-2 list-none text-gray-100">
+                <li>
+                  <strong>Segunda a Sexta:</strong> 17:00 – 23:30
+                </li>
+                <li>
+                  <strong>Sábado:</strong> 17:30 – 23:30
+                </li>
+                <li>
+                  <strong>Domingo:</strong> 17:00 – 23:25
+                </li>
+              </ul>
+              <p className="mt-6 text-secondary font-bold text-xl uppercase tracking-wide">
+                Entrega: 18:00 – 23:30
+              </p>
+            </div>
           </div>
         </div>
 

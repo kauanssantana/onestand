@@ -1,3 +1,4 @@
+import React from "react";
 import { siteData } from "../lib/data";
 
 export default function Hero() {
@@ -36,13 +37,24 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Área da Imagem Monumental */}
+        {/* Área da Imagem GIGANTE */}
         <div className="hero-image-wrapper">
           <img
             src="/img/burguer-hero.png"
             alt="Hambúrguer One Stand"
             className="hero-image"
-            style={{ width: "100%", maxWidth: "600px", height: "auto" }}
+            style={{
+              width: "220%" /* AUMENTADO: Crescimento extremo da imagem */,
+              maxWidth: "1500px" /* AUMENTADO: Limite máximo desbloqueado */,
+              minWidth:
+                "500px" /* Garante que não fica pequeno em telemóveis */,
+              height: "auto",
+              marginRight:
+                "-70%" /* Empurra todo o excesso colossal para fora do ecrã à direita */,
+              marginTop:
+                "-15%" /* Faz o hambúrguer subir ainda mais, invadindo a margem superior */,
+              marginLeft: "auto",
+            }}
           />
         </div>
       </div>

@@ -7,7 +7,7 @@
   /* Cores */
   --color-primary: #e6392b;
   --color-primary-hover: #c93025;
-  --color-secondary: #f5a623;
+  --color-secondary: #ffd700;
 
   --color-bg-dark: #3a1010;
   --color-bg-light: #f9f6f0;
@@ -679,8 +679,10 @@ h6 {
    ESTILOS DA SEÇÃO DE LOCALIZAÇÃO
 ========================================= */
 .location-section {
-  padding: 80px 0;
-  background-color: var(--color-surface);
+  padding: 100px 0;
+  background-color: var(
+    --color-bg-dark
+  ); /* Fundo alterado para marrom escuro #3a1010 */
 }
 
 .location-container {
@@ -697,6 +699,7 @@ h6 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: 64px; /* Aumentado o espaço entre o texto e o mapa */
   }
 }
 
@@ -706,39 +709,42 @@ h6 {
 
 .location-title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--color-text-dark);
-  margin-bottom: 16px;
+  color: var(--color-text-light); /* Título agora é branco para contrastar */
+  margin-bottom: 24px;
   line-height: 1.1;
 }
 
 .location-desc {
   font-family: var(--font-inter), sans-serif;
-  color: var(--color-text-muted);
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.85); /* Texto branco ligeiramente translúcido */
+  font-size: 18px; /* Fonte aumentada */
+  line-height: 1.6;
+  margin-bottom: 32px;
 }
 
 .location-details {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   font-family: var(--font-inter), sans-serif;
-  color: var(--color-text-dark);
-  font-size: 15px;
+  color: var(--color-text-light);
+  font-size: 20px; /* AUMENTADO de 16px para 20px para leitura super fácil */
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 32px 40px; /* Mais espaço interno para as letras maiores respirarem */
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .location-map-box {
-  flex: 1;
+  flex: 1.2; /* Permite que o mapa seja ligeiramente mais largo que a área de texto no ecrã do PC */
   width: 100%;
-  height: 350px;
+  height: 500px; /* AUMENTADO: de 350px para 500px */
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-surface);
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
+  border: 3px solid var(--color-secondary); /* Borda amarela para emoldurar o mapa */
 }
 
 /* =========================================
