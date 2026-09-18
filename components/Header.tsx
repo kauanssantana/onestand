@@ -6,15 +6,15 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo */}
+        {/* Logo - Tamanho 110x110 com efeito hover */}
         <div className="header-logo">
           <Link href="/">
             <Image
               src="/img/logo.jpg"
               alt="One Stand Logo"
-              width={80} // Largura igual à altura
-              height={80} // Altura igual à largura
-              className="rounded-full object-cover border-2 border-[#F5A623] shadow-md"
+              width={110}
+              height={110}
+              className="rounded-full object-cover border-2 border-[#F5A623] shadow-md transition-transform duration-300 hover:scale-105"
             />
           </Link>
         </div>
@@ -23,23 +23,28 @@ export default function Header() {
         <nav className="header-nav">
           <ul className="nav-list">
             <li>
+              <Link href="#sobre" className="nav-link">
+                Sobre Nós
+              </Link>
+            </li>
+            <li>
               <Link href="#cardapio" className="nav-link">
                 Cardápio
               </Link>
             </li>
             <li>
-              <Link href="#sobre" className="nav-link">
-                Sobre
+              <Link href="#delivery" className="nav-link">
+                Opções de Delivery
               </Link>
             </li>
             <li>
-              <Link href="#ofertas" className="nav-link">
-                Ofertas
+              <Link href="#avaliacoes" className="nav-link">
+                Avaliações
               </Link>
             </li>
             <li>
               <Link href="#contato" className="nav-link">
-                Contato
+                Localização
               </Link>
             </li>
           </ul>
