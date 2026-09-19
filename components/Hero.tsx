@@ -17,7 +17,7 @@ export default function Hero() {
         <div
           className="hero-content"
           style={{
-            marginLeft: "-8%",
+            marginLeft: "-13%",
             position: "relative",
             zIndex: 20,
           }}
@@ -59,7 +59,7 @@ export default function Hero() {
                 minWidth: "500px",
                 height: "auto",
                 marginTop: "-15%",
-                marginLeft: "-10%",
+                marginLeft: "-30%",
                 marginRight: "-60%",
               }}
             />

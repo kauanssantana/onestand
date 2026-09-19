@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
+import ScrollReveal from "./ScrollReveal";
 
-// Lista de opções de delivery para facilitar a manutenção
 const deliveryOptions = [
   {
     id: "site",
@@ -55,70 +55,76 @@ export default function DeliverySection() {
   return (
     <section className="delivery-section" id="delivery">
       <div className="delivery-container">
-        {/* Cabeçalho da Seção */}
-        <div className="text-center">
-          <span
-            className="menu-badge"
-            style={{
-              backgroundColor: "rgba(245, 166, 35, 0.15)",
-              color: "#f5a623",
-            }}
-          >
-            Peça onde estiver
-          </span>
-          {/* MUDANÇA: Forçando a cor branca no título principal com !text-white para sobrepor o CSS global se necessário */}
-          <h2 className="menu-title !text-white mt-3">
-            Opções de <span className="text-secondary">Delivery</span> &
-            Retirada
-          </h2>
-          {/* MUDANÇA: Forçando a cor branca e aumentando levemente o subtítulo */}
-          <p className="menu-subtitle !text-white text-lg mb-10 max-w-2xl mx-auto">
-            Quer curtir o sabor grelhado no fogo em casa? Escolha a sua
-            plataforma favorita clicando abaixo ou venha retirar com a gente!
-          </p>
-        </div>
-
-        {/* Grid de Cards */}
-        <div className="delivery-grid">
-          {deliveryOptions.map((option) => (
-            <a
-              key={option.id}
-              href={option.link}
-              target={option.target}
-              rel={option.target === "_blank" ? "noopener noreferrer" : ""}
-              className="delivery-card group hover:-translate-y-2 transition-transform duration-300 block"
+        {/* Cabeçalho da Seção com Fade Up */}
+        <ScrollReveal animation="fade-up">
+          <div className="text-center">
+            <span
+              className="menu-badge"
+              style={{
+                backgroundColor: "rgba(245, 166, 35, 0.15)",
+                color: "#f5a623",
+              }}
             >
-              <div className="flex flex-col items-center justify-between h-full text-center">
-                <div className="w-24 h-24 mb-6 flex items-center justify-center p-1 rounded-2xl bg-white shadow-md border border-gray-100 group-hover:border-[#e6392b] group-hover:shadow-lg transition-all mx-auto overflow-hidden">
-                  <img
-                    src={option.logoUrl}
-                    alt={`Logo ${option.name}`}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                      if (e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = `<span class="text-gray-400 font-bold text-xs">${option.name}</span>`;
-                      }
-                    }}
-                  />
-                </div>
+              Peça onde estiver
+            </span>
+            <h2 className="menu-title !text-white mt-3">
+              Opções de <span className="text-secondary">Delivery</span> &
+              Retirada
+            </h2>
+            <p className="menu-subtitle !text-white text-lg mb-10 max-w-2xl mx-auto">
+              Quer curtir o sabor grelhado no fogo em casa? Escolha a sua
+              plataforma favorita clicando abaixo ou venha retirar com a gente!
+            </p>
+          </div>
+        </ScrollReveal>
 
-                {/* Textos dos Cards */}
-                <div>
-                  {/* MUDANÇA: Aumentado de text-xl para text-2xl */}
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    {option.name}
-                  </h3>
-                  {/* MUDANÇA: Aumentado de text-sm para text-base, e cor mais escura (text-gray-700) para melhor leitura no fundo branco */}
-                  <p className="text-base text-gray-700 mb-6">{option.desc}</p>
-                </div>
+        {/* Grid de Cards com Zoom In em cascata (delay) */}
+        <div className="delivery-grid">
+          {deliveryOptions.map((option, index) => (
+            /* Cada card salta para o ecrã com um atraso baseado no index (0ms, 150ms, 300ms, etc) */
+            <ScrollReveal
+              key={option.id}
+              animation="zoom-in"
+              delay={index * 150}
+            >
+              <a
+                href={option.link}
+                target={option.target}
+                rel={option.target === "_blank" ? "noopener noreferrer" : ""}
+                className="delivery-card group hover:-translate-y-2 transition-transform duration-300 block"
+              >
+                <div className="flex flex-col items-center justify-between h-full text-center">
+                  <div className="w-24 h-24 mb-6 flex items-center justify-center p-1 rounded-2xl bg-white shadow-md border border-gray-100 group-hover:border-[#e6392b] group-hover:shadow-lg transition-all mx-auto overflow-hidden">
+                    <img
+                      src={option.logoUrl}
+                      alt={`Logo ${option.name}`}
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        if (e.currentTarget.parentElement) {
+                          e.currentTarget.parentElement.innerHTML = `<span class="text-gray-400 font-bold text-xs">${option.name}</span>`;
+                        }
+                      }}
+                    />
+                  </div>
 
-                {/* Botão Fake */}
-                <div className="btn-primary w-full text-center rounded-lg mt-auto text-base font-bold py-3">
-                  {option.cta}
+                  {/* Textos dos Cards */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                      {option.name}
+                    </h3>
+                    <p className="text-base text-gray-700 mb-6">
+                      {option.desc}
+                    </p>
+                  </div>
+
+                  {/* Botão Fake */}
+                  <div className="btn-primary w-full text-center rounded-lg mt-auto text-base font-bold py-3">
+                    {option.cta}
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </ScrollReveal>
           ))}
         </div>
       </div>
