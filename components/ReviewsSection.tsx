@@ -111,7 +111,7 @@ export default function ReviewsSection() {
             }}
           >
             <a
-              href="https://www.google.com/search?..." // (Mantém o seu link original)
+              href="https://www.google.com/search?client=opera-gx&hs=j4O&sca_esv=5c4e950c04ff1613&sxsrf=APpeQnsvwW0MADeDNHROOPGufPQISHFY4w:1789602202237&q=One+Stand+hamburgueria&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_31uD3AmOfcRcU1DosjIroQ6BE0chdsZn-ofucAgIr_yQtqFdwc9BKGwYzZAutho0Q_WxvJ-XtmVb0oaVXIB6WBcE7lPCyeg1ULenuaFsaCUhb9W9g%3D%3D&sa=X&ved=2ahUKEwjHvLbco_SWAxXfD7kGHdTVOYsQrrQLegQIHBAA&biw=2343&bih=1156&dpr=1" //
               target="_blank"
               rel="noopener noreferrer"
               style={{
