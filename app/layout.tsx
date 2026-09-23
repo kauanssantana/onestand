@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "One Stand Hamburgueria | O 1º Robô Garçom de SP",
   description:
     "Hambúrguer Artesanal grelhado no fogo como churrasco. Venha conhecer o futuro do atendimento no Grajaú!",
+  // ADICIONADO AQUI: Configuração do ícone da aba do navegador
+  icons: {
+    icon: "/img/logo.jpg",
+  },
 };
 
 export default function RootLayout({
