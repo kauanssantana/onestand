@@ -2,11 +2,10 @@
 
 import React from "react";
 import { Quote, ExternalLink } from "lucide-react";
-import ScrollReveal from "./ScrollReveal"; // IMPORTAMOS O COMPONENTE AQUI
+import ScrollReveal from "./ScrollReveal";
 
 export default function ReviewsSection() {
   const reviews = [
-    // ... (suas 6 avaliações aqui, mantive igual)
     {
       id: 1,
       name: "Kamilla Koch",
@@ -53,45 +52,45 @@ export default function ReviewsSection() {
 
   return (
     <section className="reviews-section" id="avaliacoes">
+      {/* VÍDEO PADRONIZADO IGUAL AO CARDÁPIO */}
       <video autoPlay loop muted playsInline className="menu-video-bg">
         <source src="/video/menu-bg.mp4" type="video/mp4" />
       </video>
 
+      {/* Z-10 garante que o texto fica por cima do vídeo */}
       <div className="reviews-container relative z-10">
-        {/* Título com Fade Up */}
         <ScrollReveal animation="fade-up">
-          <h2 className="menu-title mb-2">
+          <h2 className="menu-title mb-2 text-center">
             O que dizem <span className="text-secondary">Nossos Clientes</span>
           </h2>
-          <p className="menu-subtitle mb-16">
+          <p className="menu-subtitle mb-12 text-center">
             A opinião real de quem já provou a experiência One Stand.
           </p>
         </ScrollReveal>
 
         <div className="reviews-grid">
           {reviews.map((rev, index) => (
-            /* Os cards aparecem em formato Zoom-In e em cascata (delay de 100ms, 200ms, etc) */
             <ScrollReveal key={rev.id} animation="zoom-in" delay={index * 150}>
               <div className="review-card h-full">
-                <div className="absolute top-8 right-8 text-gray-100 pointer-events-none">
-                  <Quote size={64} className="fill-current opacity-70" />
+                <div className="absolute top-6 right-6 text-gray-100 pointer-events-none">
+                  <Quote size={48} className="fill-current opacity-70" />
                 </div>
 
                 <div className="relative z-10 flex flex-col h-full">
                   <div>
-                    <div className="text-[#f5a623] text-2xl mb-6 tracking-widest">
+                    <div className="text-[#f5a623] text-xl mb-4 tracking-widest">
                       {"★".repeat(rev.rating)}
                     </div>
-                    <p className="text-gray-700 italic text-lg leading-relaxed mb-10">
+                    <p className="text-gray-700 italic text-base leading-relaxed mb-6">
                       “{rev.text}”
                     </p>
                   </div>
 
-                  <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col">
-                    <h4 className="text-[#3a1010] font-bold text-2xl">
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col">
+                    <h4 className="text-[#3a1010] font-bold text-lg">
                       {rev.name}
                     </h4>
-                    <span className="text-sm font-semibold text-gray-400 mt-1 uppercase tracking-widest">
+                    <span className="text-xs font-semibold text-gray-400 mt-1 uppercase tracking-widest">
                       {rev.role}
                     </span>
                   </div>
@@ -101,31 +100,28 @@ export default function ReviewsSection() {
           ))}
         </div>
 
-        {/* Botão surgindo do lado Esquerdo */}
-        <ScrollReveal animation="fade-right" delay={300}>
+        <ScrollReveal animation="fade-up" delay={300}>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "100px",
+              marginTop: "64px",
+              paddingBottom: "32px",
             }}
           >
             <a
-              href="https://www.google.com/search?client=opera-gx&hs=j4O&sca_esv=5c4e950c04ff1613&sxsrf=APpeQnsvwW0MADeDNHROOPGufPQISHFY4w:1789602202237&q=One+Stand+hamburgueria&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_31uD3AmOfcRcU1DosjIroQ6BE0chdsZn-ofucAgIr_yQtqFdwc9BKGwYzZAutho0Q_WxvJ-XtmVb0oaVXIB6WBcE7lPCyeg1ULenuaFsaCUhb9W9g%3D%3D&sa=X&ved=2ahUKEwjHvLbco_SWAxXfD7kGHdTVOYsQrrQLegQIHBAA&biw=2343&bih=1156&dpr=1" //
+              href="https://www.google.com/search?client=opera-gx&hs=j4O&sca_esv=5c4e950c04ff1613&sxsrf=APpeQnsvwW0MADeDNHROOPGufPQISHFY4w:1789602202237&q=One+Stand+hamburgueria&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_31uD3AmOfcRcU1DosjIroQ6BE0chdsZn-ofucAgIr_yQtqFdwc9BKGwYzZAutho0Q_WxvJ-XtmVb0oaVXIB6WBcE7lPCyeg1ULenuaFsaCUhb9W9g%3D%3D&sa=X&ved=2ahUKEwjHvLbco_SWAxXfD7kGHdTVOYsQrrQLegQIHBAA&biw=2343&bih=1156&dpr=1"
               target="_blank"
               rel="noopener noreferrer"
+              className="group flex items-center justify-center gap-3 transition-all duration-300"
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                padding: "20px 48px",
+                padding: "16px 40px",
                 borderRadius: "50px",
-                border: "3px solid #3a1010",
+                border: "2px solid #3a1010",
                 color: "#3a1010",
-                fontWeight: "900",
-                fontSize: "20px",
+                fontWeight: "bold",
+                fontSize: "15px",
                 textDecoration: "none",
-                transition: "all 0.3s ease",
                 cursor: "pointer",
               }}
               onMouseOver={(e) => {
@@ -138,7 +134,10 @@ export default function ReviewsSection() {
               }}
             >
               VER TODAS AS AVALIAÇÕES NO GOOGLE
-              <ExternalLink size={28} />
+              <ExternalLink
+                size={20}
+                className="group-hover:scale-110 transition-transform"
+              />
             </a>
           </div>
         </ScrollReveal>

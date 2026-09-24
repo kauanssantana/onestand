@@ -17,7 +17,8 @@ export default function Hero() {
         <div
           className="hero-content"
           style={{
-            marginLeft: "-13%",
+            marginLeft:
+              "-5%" /* Ligeiramente ajustado para equilibrar com o novo tamanho da imagem */,
             position: "relative",
             zIndex: 20,
           }}
@@ -46,7 +47,7 @@ export default function Hero() {
           </ScrollReveal>
         </div>
 
-        {/* COLUNA DIREITA (IMAGEM MONUMENTAL) */}
+        {/* COLUNA DIREITA (IMAGEM MONUMENTAL AJUSTADA) */}
         <div className="hero-image-wrapper">
           <ScrollReveal animation="zoom-in" delay={300}>
             <img
@@ -54,13 +55,15 @@ export default function Hero() {
               alt="Hambúrguer One Stand"
               className="hero-image"
               style={{
-                width: "220%",
-                maxWidth: "1500px",
-                minWidth: "500px",
+                width:
+                  "165%" /* Reduzido para simular o efeito do zoom a 75% */,
+                maxWidth:
+                  "1100px" /* Trava máxima reduzida para evitar que cresça demais em monitores gigantes */,
+                minWidth: "400px",
                 height: "auto",
-                marginTop: "-15%",
-                marginLeft: "-30%",
-                marginRight: "-60%",
+                marginTop: "-10%",
+                marginLeft: "-20%",
+                marginRight: "-45%",
               }}
             />
           </ScrollReveal>

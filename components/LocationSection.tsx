@@ -18,17 +18,19 @@ export default function LocationSection() {
 
             <div className="location-details">
               <p className="mb-4">
-                <strong className="text-secondary text-2xl block mb-1">
+                {/* Reduzido de text-2xl para text-lg */}
+                <strong className="text-secondary text-lg block mb-1">
                   Endereço:
                 </strong>
                 R. Jequirituba, 1510 - Parque America, São Paulo - SP, 04822-000
               </p>
 
-              <div className="mt-8">
-                <strong className="text-secondary text-2xl block mb-2">
+              <div className="mt-6">
+                {/* Reduzido de text-2xl para text-lg */}
+                <strong className="text-secondary text-lg block mb-2">
                   Horário de Funcionamento:
                 </strong>
-                <ul className="mt-3 space-y-2 list-none text-gray-100">
+                <ul className="mt-2 space-y-1 list-none text-gray-100">
                   <li>
                     <strong>Segunda a Sexta:</strong> 17:00 – 23:30
                   </li>
@@ -39,7 +41,8 @@ export default function LocationSection() {
                     <strong>Domingo:</strong> 17:00 – 23:25
                   </li>
                 </ul>
-                <p className="mt-6 text-secondary font-bold text-xl uppercase tracking-wide">
+                {/* Reduzido de text-xl para text-base */}
+                <p className="mt-4 text-secondary font-bold text-base uppercase tracking-wide">
                   Entrega: 18:00 – 23:30
                 </p>
               </div>
@@ -47,7 +50,7 @@ export default function LocationSection() {
           </ScrollReveal>
         </div>
 
-        {/* Mapa vem da direita - Agora com w-full e h-full para não ser espremido */}
+        {/* Mapa vem da direita */}
         <div className="location-map-box">
           <ScrollReveal
             animation="fade-left"
@@ -59,7 +62,11 @@ export default function LocationSection() {
               src="https://maps.google.com/maps?q=Rua%20Jequirituba,%201510%20-%20Parque%20America,%20Sao%20Paulo&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "500px", borderRadius: "8px" }}
+              style={{
+                border: 0,
+                minHeight: "400px",
+                borderRadius: "8px",
+              }} /* Reduzido para 400px */
               allowFullScreen={false}
               loading="lazy"
             ></iframe>

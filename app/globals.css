@@ -109,7 +109,7 @@ h6 {
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .nav-link {
@@ -117,7 +117,7 @@ h6 {
   text-decoration: none;
   font-family: var(--font-montserrat), sans-serif;
   font-weight: 600;
-  font-size: 15px; /* Ligeiramente menor para caberem todos os novos links perfeitamente */
+  font-size: 13px; /* Ligeiramente menor para caberem todos os novos links perfeitamente */
   transition: color 0.3s ease;
 }
 
@@ -128,12 +128,12 @@ h6 {
 .btn-secondary {
   background-color: var(--color-secondary);
   color: var(--color-text-dark);
-  padding: 10px 24px;
+  padding: 8px 20px;
   border-radius: var(--radius-md);
   text-decoration: none;
   font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 14px;
   transition: all 0.2s ease-in-out;
   display: inline-block;
 }
@@ -408,7 +408,7 @@ h6 {
 }
 
 .menu-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -455,8 +455,8 @@ h6 {
 .menu-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
-  max-width: 1200px;
+  gap: 24px;
+  max-width: 1000px;
   margin: 0 auto;
   /* Trava de altura mínima para estabilizar o layout independentemente da quantidade de itens */
   min-height: 550px;
@@ -483,6 +483,7 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -494,7 +495,7 @@ h6 {
 }
 
 .menu-card-image {
-  height: 220px;
+  height: 180px;
   background-color: var(--color-surface);
   display: flex;
   align-items: center;
@@ -515,7 +516,7 @@ h6 {
 }
 
 .menu-card-content {
-  padding: 24px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -531,14 +532,14 @@ h6 {
 
 .menu-card-title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--color-text-dark);
 }
 
 .menu-card-price {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--color-primary);
   white-space: nowrap;
@@ -546,10 +547,10 @@ h6 {
 
 .menu-card-desc {
   font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
   line-height: 1.5;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .menu-footer-cta {
@@ -626,25 +627,40 @@ h6 {
 ========================================= */
 .reviews-section {
   position: relative;
-  overflow: hidden; /* Impede que o vídeo em absolute vaze da seção */
-  padding: 120px 0;
-  background-color: #f9f6f0; /* Cor de fundo clara para segurança caso o vídeo demore a carregar */
+  overflow: clip;
+  padding: 80px 0;
+  background-color: transparent; /* MUDANÇA AQUI: Tira a cor de fundo sólida */
+}
+
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* 90% de opacidade garante que o texto dos cartões é fácil de ler, 
+     mas ainda dá para ver o vídeo a mexer lá atrás */
+  background-color: rgba(249, 246, 240, 0.9);
+  z-index: -1; /* Tem de ser -1 para ficar atrás dos cartões, mas à frente do vídeo */
 }
 
 .reviews-container {
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
   text-align: center;
-  position: relative; /* Garante estrutura acima do vídeo */
+  position: relative;
   z-index: 2;
 }
+
+/* O restante CSS do reviews-grid e review-card continua igual... */
 
 .reviews-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
-  margin-top: 48px;
+  gap: 24px;
+  margin-top: 40px;
 }
 
 @media (min-width: 768px) {
@@ -663,8 +679,8 @@ h6 {
 .review-card {
   background-color: var(--color-text-light);
   border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 24px 32px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
   text-align: left;
   transition:
     transform 0.3s ease,
@@ -683,7 +699,7 @@ h6 {
    ESTILOS DA SEÇÃO DE LOCALIZAÇÃO
 ========================================= */
 .location-section {
-  padding: 100px 0;
+  padding: 80px 0;
   background-color: var(
     --color-bg-dark
   ); /* Fundo alterado para marrom escuro #3a1010 */
@@ -695,7 +711,7 @@ h6 {
   padding: 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 40px;
 }
 
 @media (min-width: 1024px) {
@@ -713,7 +729,7 @@ h6 {
 
 .location-title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 900;
   text-transform: uppercase;
   color: var(--color-text-light); /* Título agora é branco para contrastar */
@@ -724,7 +740,7 @@ h6 {
 .location-desc {
   font-family: var(--font-inter), sans-serif;
   color: rgba(255, 255, 255, 0.85); /* Texto branco ligeiramente translúcido */
-  font-size: 18px; /* Fonte aumentada */
+  font-size: 15px; /* Fonte aumentada */
   line-height: 1.6;
   margin-bottom: 32px;
 }
@@ -734,9 +750,9 @@ h6 {
   flex-direction: column;
   font-family: var(--font-inter), sans-serif;
   color: var(--color-text-light);
-  font-size: 20px; /* AUMENTADO de 16px para 20px para leitura super fácil */
+  font-size: 15px; /* AUMENTADO de 16px para 20px para leitura super fácil */
   background-color: rgba(0, 0, 0, 0.25);
-  padding: 32px 40px; /* Mais espaço interno para as letras maiores respirarem */
+  padding: 24px 32px; /* Mais espaço interno para as letras maiores respirarem */
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -744,7 +760,7 @@ h6 {
 .location-map-box {
   flex: 1.2; /* Permite que o mapa seja ligeiramente mais largo que a área de texto no ecrã do PC */
   width: 100%;
-  height: 500px; /* AUMENTADO: de 350px para 500px */
+  height: 400px; /* AUMENTADO: de 350px para 500px */
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
@@ -758,7 +774,7 @@ h6 {
   /* Fundo castanho-preto profundo para fechar o site com elegância */
   background-color: #160404;
   color: var(--color-text-light);
-  padding: 80px 0 32px 0;
+  padding: 60px 0 24px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -779,7 +795,7 @@ h6 {
 
 .footer-col h3 {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--color-secondary);
   margin-bottom: 20px;
@@ -788,7 +804,7 @@ h6 {
 
 .footer-col h4 {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-text-light);
   margin-bottom: 24px;
@@ -798,7 +814,7 @@ h6 {
 
 .footer-col p {
   font-family: var(--font-inter), sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
 }
@@ -812,7 +828,7 @@ h6 {
 
 .footer-link {
   font-family: var(--font-inter), sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: all 0.3s ease;
@@ -830,7 +846,7 @@ h6 {
   align-items: center;
   gap: 12px;
   font-family: var(--font-inter), sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -842,11 +858,11 @@ h6 {
 
 .footer-bottom {
   max-width: 1200px;
-  margin: 64px auto 0 auto;
-  padding: 32px 24px 0 24px;
+  margin: 40px auto 0 auto;
+  padding: 24px 24px 0 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
 }
 /* =========================================
@@ -907,7 +923,7 @@ h6 {
 
 /* Tamanho do Círculo - Ajuste para liberar mais "respiro" na tela */
 .category-icon-wrapper {
-  width: 85px;
+  width: 70px;
   height: 85px;
   border-radius: var(--radius-pill);
   background-color: var(--color-text-light);
@@ -923,8 +939,8 @@ h6 {
 
 @media (min-width: 1024px) {
   .category-icon-wrapper {
-    width: 96px; /* Reduzido levemente de 115px para 96px para gerar muita distância entre eles */
-    height: 96px;
+    width: 75px; /* Reduzido levemente de 115px para 96px para gerar muita distância entre eles */
+    height: 75px;
   }
 }
 
@@ -940,15 +956,15 @@ h6 {
 
 @media (min-width: 1024px) {
   .category-icon-wrapper img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 /* Texto das Categorias */
 .category-label {
   font-family: var(--font-inter), sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--color-text-muted);
   text-align: center;
@@ -960,7 +976,7 @@ h6 {
 
 @media (min-width: 1024px) {
   .category-label {
-    font-size: 14.5px;
+    font-size: 13px;
   }
 }
 
@@ -1011,30 +1027,50 @@ h6 {
 ========================================= */
 .menu-section {
   position: relative;
-  overflow: hidden;
-  background-color: #f9f6f0; /* Tom base claro correspondente ao vídeo */
-  padding: 80px 0;
-  min-height: 900px;
+  /* Mudado para clip em vez de hidden para o fixed funcionar melhor se houver conflitos */
+  overflow: clip;
+  background-color: transparent; /* Deixa o fundo transparente para ver o vídeo colado atrás */
+  padding: 60px 0;
 }
 
 .menu-video-bg {
-  position: absolute;
+  /* SOLUÇÃO: O vídeo fica fixo à janela, não estica com a altura dos cartões! */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
-  z-index: 0;
+  z-index: -1; /* Garante que fica por baixo de tudo no site */
+  pointer-events: none; /* Evita que o vídeo bloqueie cliques */
 }
 
-/* Sem overlay escuro para manter o fundo limpo e claro (#f9f6f0) */
+/* Criámos um fundo ligeiramente translúcido apenas para a secção do menu,
+   para garantir que as letras do menu não se perdem no vídeo,
+   mas permitindo ver as bordas animadas do vídeo de fundo */
+.menu-container::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  background-color: rgba(
+    249,
+    246,
+    240,
+    0.95
+  ); /* A cor #f9f6f0 com 95% de opacidade */
+  z-index: -1;
+  box-shadow: 0 0 50px 50px rgba(249, 246, 240, 0.95); /* Esbate as bordas suavemente */
+}
 
 .menu-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
-  z-index: 2; /* Mantém os cartões e textos perfeitamente clicáveis acima do vídeo */
+  z-index: 2;
 }
 
 /* =========================================
@@ -1043,8 +1079,19 @@ h6 {
 .carousel-section {
   position: relative;
   padding: 100px 0 140px 0;
-  overflow: hidden;
-  background-color: var(--color-bg-light);
+  overflow: clip; /* Mudado de hidden para clip para não cortar o vídeo fixo */
+  background-color: transparent; /* MUDANÇA AQUI: Tira o fundo sólido que tapava o vídeo */
+}
+
+.carousel-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(249, 246, 240, 0.6); /* 60% de opacidade */
+  z-index: -1;
 }
 
 .carousel-container {

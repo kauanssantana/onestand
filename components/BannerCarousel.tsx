@@ -20,14 +20,17 @@ const banners: Banner[] = [
 ];
 
 const extendedBanners: Banner[] = [
-  { ...banners[banners.length - 1], cloneKey: "clone-last" },
+  { ...banners[banners.length - 3], cloneKey: "clone-pre-3" },
+  { ...banners[banners.length - 2], cloneKey: "clone-pre-2" },
+  { ...banners[banners.length - 1], cloneKey: "clone-pre-1" },
   ...banners,
-  { ...banners[0], cloneKey: "clone-first" },
-  { ...banners[1], cloneKey: "clone-second" },
+  { ...banners[0], cloneKey: "clone-pos-1" },
+  { ...banners[1], cloneKey: "clone-pos-2" },
+  { ...banners[2], cloneKey: "clone-pos-3" },
 ];
 
-const FIRST_REAL_INDEX = 1;
-const LAST_REAL_INDEX = banners.length;
+const FIRST_REAL_INDEX = 3;
+const LAST_REAL_INDEX = banners.length + 2;
 
 export default function BannerCarousel() {
   const [currentIndex, setCurrentIndex] = useState(FIRST_REAL_INDEX);
@@ -40,15 +43,11 @@ export default function BannerCarousel() {
   useEffect(() => {
     const slideEl = firstSlideRef.current;
     if (!slideEl) return;
-
-    const updateWidth = () => {
+    const updateWidth = () =>
       setSlideWidthPx(slideEl.getBoundingClientRect().width);
-    };
-
     const resizeObserver = new ResizeObserver(updateWidth);
     resizeObserver.observe(slideEl);
     updateWidth();
-
     return () => resizeObserver.disconnect();
   }, []);
 
@@ -74,19 +73,18 @@ export default function BannerCarousel() {
   }, [isHovered, nextSlide]);
 
   const handleTransitionEnd = () => {
-    if (currentIndex > LAST_REAL_INDEX) {
+    if (currentIndex >= LAST_REAL_INDEX + 1) {
       setWithTransition(false);
-      setCurrentIndex(FIRST_REAL_INDEX);
+      setCurrentIndex(FIRST_REAL_INDEX + (currentIndex - LAST_REAL_INDEX - 1));
     } else if (currentIndex < FIRST_REAL_INDEX) {
       setWithTransition(false);
-      setCurrentIndex(LAST_REAL_INDEX);
+      setCurrentIndex(LAST_REAL_INDEX - (FIRST_REAL_INDEX - currentIndex - 1));
     }
   };
 
   const realActiveIndex =
     (((currentIndex - FIRST_REAL_INDEX) % banners.length) + banners.length) %
     banners.length;
-
   const translateX = -1 * currentIndex * slideWidthPx;
 
   return (
@@ -95,11 +93,13 @@ export default function BannerCarousel() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* VÍDEO PADRONIZADO IGUAL AO CARDÁPIO */}
       <video autoPlay loop muted playsInline className="menu-video-bg">
         <source src="/video/menu-bg.mp4" type="video/mp4" />
       </video>
 
-      <div className="carousel-container group w-full">
+      {/* Z-10 garante que os banners ficam por cima do vídeo */}
+      <div className="carousel-container group w-full relative z-10">
         <button
           className="carousel-btn prev"
           onClick={prevSlide}
@@ -133,7 +133,6 @@ export default function BannerCarousel() {
                 ref={index === FIRST_REAL_INDEX ? firstSlideRef : undefined}
                 className="carousel-slide"
               >
-                {/* Removido o h-full para a imagem ditar a altura natural */}
                 <div className="w-full rounded-2xl overflow-hidden shadow-xl bg-[#EA7611] flex items-center justify-center">
                   <img
                     src={banner.image}
