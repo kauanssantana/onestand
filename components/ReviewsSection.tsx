@@ -50,14 +50,41 @@ export default function ReviewsSection() {
     },
   ];
 
-  return (
-    <section className="reviews-section" id="avaliacoes">
-      {/* VÍDEO PADRONIZADO IGUAL AO CARDÁPIO */}
-      <video autoPlay loop muted playsInline className="menu-video-bg">
-        <source src="/video/menu-bg.mp4" type="video/mp4" />
-      </video>
+  /* Os clones agora recebem uma classe dedicada "review-clone" em vez do md:hidden do Tailwind */
+  const allReviews = [
+    ...reviews.map((r) => ({
+      ...r,
+      uniqueKey: `orig-${r.id}`,
+      cloneClass: "",
+    })),
+    ...reviews.map((r) => ({
+      ...r,
+      uniqueKey: `clone-${r.id}`,
+      cloneClass: "review-clone",
+    })),
+  ];
 
-      {/* Z-10 garante que o texto fica por cima do vídeo */}
+  return (
+    <section
+      className="reviews-section relative"
+      id="avaliacoes"
+      style={{ overflow: "clip" }}
+    >
+      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+        <div className="sticky top-0 w-full h-screen">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/video/menu-bg.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-[#f9f6f0] bg-opacity-90"></div>
+        </div>
+      </div>
+
       <div className="reviews-container relative z-10">
         <ScrollReveal animation="fade-up">
           <h2 className="menu-title mb-2 text-center">
@@ -68,44 +95,49 @@ export default function ReviewsSection() {
           </p>
         </ScrollReveal>
 
-        <div className="reviews-grid">
-          {reviews.map((rev, index) => (
-            <ScrollReveal key={rev.id} animation="zoom-in" delay={index * 150}>
-              <div className="review-card h-full">
-                <div className="absolute top-6 right-6 text-gray-100 pointer-events-none">
-                  <Quote size={48} className="fill-current opacity-70" />
-                </div>
+        <ScrollReveal animation="fade-up" delay={200}>
+          <div className="reviews-wrapper">
+            <div className="reviews-grid">
+              {allReviews.map((rev) => (
+                <div
+                  key={rev.uniqueKey}
+                  className={`review-card h-full ${rev.cloneClass}`}
+                >
+                  <div className="absolute top-6 right-6 text-gray-100 pointer-events-none">
+                    <Quote size={48} className="fill-current opacity-70" />
+                  </div>
 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div>
-                    <div className="text-[#f5a623] text-xl mb-4 tracking-widest">
-                      {"★".repeat(rev.rating)}
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div>
+                      <div className="text-[#f5a623] text-xl mb-4 tracking-widest">
+                        {"★".repeat(rev.rating)}
+                      </div>
+                      <p className="text-gray-700 italic text-base leading-relaxed mb-6">
+                        “{rev.text}”
+                      </p>
                     </div>
-                    <p className="text-gray-700 italic text-base leading-relaxed mb-6">
-                      “{rev.text}”
-                    </p>
-                  </div>
 
-                  <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col">
-                    <h4 className="text-[#3a1010] font-bold text-lg">
-                      {rev.name}
-                    </h4>
-                    <span className="text-xs font-semibold text-gray-400 mt-1 uppercase tracking-widest">
-                      {rev.role}
-                    </span>
+                    <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col">
+                      <h4 className="text-[#3a1010] font-bold text-lg">
+                        {rev.name}
+                      </h4>
+                      <span className="text-xs font-semibold text-gray-400 mt-1 uppercase tracking-widest">
+                        {rev.role}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal animation="fade-up" delay={300}>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "64px",
+              marginTop: "48px",
               paddingBottom: "32px",
             }}
           >

@@ -892,7 +892,7 @@ h6 {
   position: relative;
   overflow: clip;
   padding: 80px 0;
-  background-color: transparent; /* MUDANÇA AQUI: Tira a cor de fundo sólida */
+  background-color: transparent;
 }
 
 .reviews-section::before {
@@ -905,7 +905,7 @@ h6 {
   /* 90% de opacidade garante que o texto dos cartões é fácil de ler, 
      mas ainda dá para ver o vídeo a mexer lá atrás */
   background-color: rgba(249, 246, 240, 0.9);
-  z-index: -1; /* Tem de ser -1 para ficar atrás dos cartões, mas à frente do vídeo */
+  z-index: -1;
 }
 
 .reviews-container {
@@ -917,28 +917,51 @@ h6 {
   z-index: 2;
 }
 
-/* O restante CSS do reviews-grid e review-card continua igual... */
+/* Envoltório do carrossel no Mobile */
+.reviews-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+  /* Máscara em degradê para os cartões desaparecerem suavemente nas bordas laterais do telemóvel */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
 
 .reviews-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 24px;
-  margin-top: 40px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
 }
 
-@media (min-width: 768px) {
-  .reviews-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+/* O carrossel pausa se o cliente quiser ler a avaliação com mais calma */
+.reviews-grid:hover,
+.reviews-grid:active {
+  animation-play-state: paused;
+}
+
+/* O cálculo matemático perfeito para reiniciar o carrossel sem saltos bruscos */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12px));
   }
 }
 
-@media (min-width: 1024px) {
-  .reviews-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas em monitores */
-  }
-}
-
-/* O cartão agora tem padding generoso, bordas arredondadas e efeito hover de elevação */
 .review-card {
   background-color: var(--color-text-light);
   border-radius: var(--radius-lg);
@@ -951,11 +974,47 @@ h6 {
   position: relative;
   display: flex;
   flex-direction: column;
+
+  /* REGRAS MOBILE: Força os cartões a terem a mesma largura no carrossel horizontal */
+  width: 85vw;
+  max-width: 350px;
+  flex-shrink: 0;
 }
 
 .review-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   RESET DO CARROSSEL PARA O PC (DESKTOP)
+========================================= */
+@media (min-width: 768px) {
+  /* MUDANÇA CRÍTICA: Esconde à força os 6 cartões duplicados para não quebrarem o layout de PC */
+  .review-clone {
+    display: none !important;
+  }
+
+  .reviews-wrapper {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    animation: none;
+  }
+  .review-card {
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* =========================================
