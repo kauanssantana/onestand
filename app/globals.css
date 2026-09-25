@@ -143,6 +143,73 @@ h6 {
 }
 
 /* =========================================
+   MENU MOBILE (Adicionar abaixo dos estilos do Header)
+========================================= */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #160404; /* Mesma cor do Header */
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s ease-in-out,
+    padding 0.4s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu.open {
+  max-height: 500px;
+  padding: 24px 0 32px 0;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mobile-nav a:not(.btn-primary) {
+  color: var(--color-text-light);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mobile-nav a:not(.btn-primary):hover {
+  color: var(--color-secondary);
+}
+
+/* =========================================
+   AJUSTES GLOBAIS RESPONSIVOS
+========================================= */
+/* Ajuste os espaçamentos do Hero para telemóveis */
+.hero {
+  padding: 100px 0 60px 0;
+}
+
+.hero-title {
+  font-size: clamp(
+    38px,
+    10vw,
+    64px
+  ); /* Evita que o texto quebre mal no telemóvel */
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 140px 0;
+  }
+}
+
+/* =========================================
    VÍDEO DE FUNDO E OVERLAY DO HERO
 ========================================= */
 .hero {

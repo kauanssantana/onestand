@@ -14,27 +14,19 @@ export default function Hero() {
 
       <div className="hero-container">
         {/* COLUNA ESQUERDA (TEXTO) */}
-        <div
-          className="hero-content"
-          style={{
-            marginLeft:
-              "-5%" /* Ligeiramente ajustado para equilibrar com o novo tamanho da imagem */,
-            position: "relative",
-            zIndex: 20,
-          }}
-        >
+        <div className="hero-content relative z-20 mt-10 md:mt-0 text-center md:text-left md:-ml-[5%]">
           <ScrollReveal animation="fade-right" delay={100}>
             <h1 className="hero-title">
               Burger feito
               <br />
               <span className="text-secondary">no fogo de verdade</span>
             </h1>
-            <p className="hero-subtitle">
+            <p className="hero-subtitle mx-auto md:mx-0">
               Carne suculenta grelhada no fogo, ingredientes sempre frescos e
               uma experiência única para a família com o 1º Robô Garçom do
               Grajaú.
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions flex justify-center md:justify-start">
               <a
                 href={siteData.company.menuLink}
                 target="_blank"
@@ -47,24 +39,14 @@ export default function Hero() {
           </ScrollReveal>
         </div>
 
-        {/* COLUNA DIREITA (IMAGEM MONUMENTAL AJUSTADA) */}
-        <div className="hero-image-wrapper">
+        {/* COLUNA DIREITA (IMAGEM) */}
+        <div className="hero-image-wrapper mt-12 md:mt-0 flex justify-center md:justify-end">
           <ScrollReveal animation="zoom-in" delay={300}>
             <img
               src="/img/burguer-hero.png"
               alt="Hambúrguer One Stand"
-              className="hero-image"
-              style={{
-                width:
-                  "165%" /* Reduzido para simular o efeito do zoom a 75% */,
-                maxWidth:
-                  "1100px" /* Trava máxima reduzida para evitar que cresça demais em monitores gigantes */,
-                minWidth: "400px",
-                height: "auto",
-                marginTop: "-10%",
-                marginLeft: "-20%",
-                marginRight: "-45%",
-              }}
+              /* Único className combinando a animação hero-image com as regras responsivas do Tailwind */
+              className="hero-image w-[115%] max-w-[500px] md:w-[165%] md:max-w-[1100px] md:-mt-[10%] md:-ml-[20%] md:-mr-[45%]"
             />
           </ScrollReveal>
         </div>
