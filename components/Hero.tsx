@@ -40,13 +40,17 @@ export default function Hero() {
         </div>
 
         {/* COLUNA DIREITA (IMAGEM) */}
-        <div className="hero-image-wrapper mt-12 md:mt-0 flex justify-center md:justify-end">
-          <ScrollReveal animation="zoom-in" delay={300}>
+        <div className="hero-image-wrapper mt-12 md:mt-0 flex w-full justify-center md:justify-end">
+          <ScrollReveal
+            animation="zoom-in"
+            delay={300}
+            className="flex justify-center w-full"
+          >
             <img
               src="/img/burguer-hero.png"
               alt="Hambúrguer One Stand"
-              /* Único className combinando a animação hero-image com as regras responsivas do Tailwind */
-              className="hero-image w-[115%] max-w-[500px] md:w-[165%] md:max-w-[1100px] md:-mt-[10%] md:-ml-[20%] md:-mr-[45%]"
+              /* MUDANÇA AQUI: No mobile usa w-[95%] e mx-auto para centrar perfeitamente */
+              className="hero-image w-[95%] max-w-[400px] mx-auto block md:w-[165%] md:max-w-[1100px] md:-mt-[10%] md:-ml-[20%] md:-mr-[45%]"
             />
           </ScrollReveal>
         </div>
