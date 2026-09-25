@@ -6,14 +6,14 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo - Tamanho 110x110 com efeito hover */}
+        {/* Logo - Tamanho reduzido para 75x75 para um Header mais fino */}
         <div className="header-logo">
           <Link href="/">
             <Image
               src="/img/logo.jpg"
               alt="One Stand Logo"
-              width={110}
-              height={110}
+              width={75}
+              height={75}
               className="rounded-full object-cover border-2 border-[#F5A623] shadow-md transition-transform duration-300 hover:scale-105"
             />
           </Link>

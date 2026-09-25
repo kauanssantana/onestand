@@ -6,8 +6,8 @@ import ScrollReveal from "./ScrollReveal";
 const deliveryOptions = [
   {
     id: "site",
-    name: "Site Oficial (Desconto)",
-    desc: "Peça direto com a gente e ganhe +20% de desconto no seu pedido!",
+    name: "Site Oficial",
+    desc: "Peça direto connosco e ganhe +20% de desconto no pedido!",
     link: "https://shop.beetech.com.br/oneburger",
     logoUrl: "/img/logo.jpg",
     cta: "Pedir com Desconto",
@@ -16,7 +16,7 @@ const deliveryOptions = [
   {
     id: "ifood",
     name: "iFood",
-    desc: "Peça pelo iFood com a rapidez e praticidade que você já conhece.",
+    desc: "Peça pelo iFood com a rapidez e praticidade que já conhece.",
     link: "https://www.ifood.com.br/delivery/sao-paulo-sp/one-stand-hamburgueria-parque-america/e66b1d8a-dff2-4b80-afed-36ed3c8dbc1a?UTM_Medium=share",
     logoUrl: "/img/logo-ifood.png",
     cta: "Pedir no iFood",
@@ -24,8 +24,8 @@ const deliveryOptions = [
   },
   {
     id: "99food",
-    name: "99",
-    desc: "Aproveite os cupons e receba rápido através do aplicativo da 99.",
+    name: "99 Food",
+    desc: "Aproveite os cupons e receba rápido através da aplicação 99.",
     link: "https://h5.didiglobal.com/silver-bullet-online/8FTSBVvN4wxCUanV-UY0W?ddlCode=9QLbNU&area=BR&lang=pt-BR&appKey=dlp9&redirectType=0",
     logoUrl: "/img/logo-99.jpg",
     cta: "Pedir na 99",
@@ -34,7 +34,7 @@ const deliveryOptions = [
   {
     id: "keeta",
     name: "KeeTa",
-    desc: "Novidade na área! Peça seus hambúrgueres também pelo KeeTa.",
+    desc: "Novidade na área! Peça os seus hambúrgueres também pelo KeeTa.",
     link: "https://m.mykeeta.com/marketing/applaunch/index.html?locale=en",
     logoUrl: "/img/logo-keeta.png",
     cta: "Pedir no KeeTa",
@@ -42,8 +42,8 @@ const deliveryOptions = [
   },
   {
     id: "salao",
-    name: "Retirada & Salão",
-    desc: "Venha conhecer o 1º Robô Garçom de SP e retirar seu pedido no balcão!",
+    name: "Retirada",
+    desc: "Venha conhecer o 1º Robô Garçom de SP e retirar no balcão!",
     link: "#contato",
     logoUrl: "/img/logo.jpg",
     cta: "Ver Endereço",
@@ -55,7 +55,7 @@ export default function DeliverySection() {
   return (
     <section className="delivery-section" id="delivery">
       <div className="delivery-container">
-        {/* Cabeçalho da Seção com Fade Up */}
+        {/* Cabeçalho da Seção */}
         <ScrollReveal animation="fade-up">
           <div className="text-center">
             <span
@@ -67,34 +67,33 @@ export default function DeliverySection() {
             >
               Peça onde estiver
             </span>
-            <h2 className="menu-title !text-white mt-3">
-              Opções de <span className="text-secondary">Delivery</span> &
-              Retirada
+            <h2 className="menu-title !text-white mt-2">
+              Opções de <span className="text-secondary">Delivery</span>
             </h2>
-            <p className="menu-subtitle !text-white text-lg mb-10 max-w-2xl mx-auto">
+            <p className="menu-subtitle !text-white text-sm mt-3 mb-8 max-w-xl mx-auto opacity-80">
               Quer curtir o sabor grelhado no fogo em casa? Escolha a sua
               plataforma favorita clicando abaixo ou venha retirar com a gente!
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Grid de Cards com Zoom In em cascata (delay) */}
+        {/* Grid de Cards com Zoom In em cascata */}
         <div className="delivery-grid">
           {deliveryOptions.map((option, index) => (
-            /* Cada card salta para o ecrã com um atraso baseado no index (0ms, 150ms, 300ms, etc) */
             <ScrollReveal
               key={option.id}
               animation="zoom-in"
-              delay={index * 150}
+              delay={index * 100}
             >
               <a
                 href={option.link}
                 target={option.target}
                 rel={option.target === "_blank" ? "noopener noreferrer" : ""}
-                className="delivery-card group hover:-translate-y-2 transition-transform duration-300 block"
+                className="delivery-card group hover:-translate-y-2 transition-transform duration-300 block h-full"
               >
                 <div className="flex flex-col items-center justify-between h-full text-center">
-                  <div className="w-24 h-24 mb-6 flex items-center justify-center p-1 rounded-2xl bg-white shadow-md border border-gray-100 group-hover:border-[#e6392b] group-hover:shadow-lg transition-all mx-auto overflow-hidden">
+                  {/* Logótipos mais pequenos (w-16 h-16 em vez de w-24 h-24) */}
+                  <div className="w-16 h-16 mb-4 flex items-center justify-center p-1 rounded-xl bg-white shadow-sm border border-gray-100 group-hover:border-[#e6392b] group-hover:shadow-md transition-all mx-auto overflow-hidden">
                     <img
                       src={option.logoUrl}
                       alt={`Logo ${option.name}`}
@@ -109,17 +108,17 @@ export default function DeliverySection() {
                   </div>
 
                   {/* Textos dos Cards */}
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">
                       {option.name}
                     </h3>
-                    <p className="text-base text-gray-700 mb-6">
+                    <p className="text-sm text-gray-600 mb-6 line-clamp-3">
                       {option.desc}
                     </p>
                   </div>
 
-                  {/* Botão Fake */}
-                  <div className="btn-primary w-full text-center rounded-lg mt-auto text-base font-bold py-3">
+                  {/* Botão Fake - Menor e mais discreto */}
+                  <div className="btn-primary w-full text-center rounded-lg mt-auto text-sm font-bold py-2.5">
                     {option.cta}
                   </div>
                 </div>
