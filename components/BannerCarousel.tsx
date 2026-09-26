@@ -38,6 +38,10 @@ export default function BannerCarousel() {
   const [withTransition, setWithTransition] = useState(true);
   const [slideWidthPx, setSlideWidthPx] = useState(0);
 
+  // Estados para detectar o "Swipe" (deslizar o dedo no telemóvel)
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
   const firstSlideRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,10 +60,10 @@ export default function BannerCarousel() {
     setCurrentIndex((prev) => prev + 1);
   }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setWithTransition(true);
     setCurrentIndex((prev) => prev - 1);
-  };
+  }, []);
 
   const goToSlide = (realIndex: number) => {
     setWithTransition(true);
@@ -82,6 +86,27 @@ export default function BannerCarousel() {
     }
   };
 
+  // Funções de Gestos (Swipe)
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reseta o final do toque
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsHovered(true); // Pausa o carrossel automático
+  };
+
+  const onTouchMove = (e: React.TouchEvent) =>
+    setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    setIsHovered(false); // Retoma o carrossel
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50; // Deslizou para a esquerda (próximo)
+    const isRightSwipe = distance < -50; // Deslizou para a direita (anterior)
+
+    if (isLeftSwipe) nextSlide();
+    if (isRightSwipe) prevSlide();
+  };
+
   const realActiveIndex =
     (((currentIndex - FIRST_REAL_INDEX) % banners.length) + banners.length) %
     banners.length;
@@ -93,15 +118,14 @@ export default function BannerCarousel() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* VÍDEO PADRONIZADO IGUAL AO CARDÁPIO */}
       <video autoPlay loop muted playsInline className="menu-video-bg">
         <source src="/video/menu-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* Z-10 garante que os banners ficam por cima do vídeo */}
       <div className="carousel-container group w-full relative z-10">
+        {/* Escondemos as setas no telemóvel usando classes do Tailwind (hidden md:flex) */}
         <button
-          className="carousel-btn prev"
+          className="carousel-btn prev hidden md:flex"
           onClick={prevSlide}
           aria-label="Anterior"
         >
@@ -109,22 +133,26 @@ export default function BannerCarousel() {
         </button>
 
         <button
-          className="carousel-btn next"
+          className="carousel-btn next hidden md:flex"
           onClick={nextSlide}
           aria-label="Próximo"
         >
           <ChevronRight size={28} strokeWidth={3} />
         </button>
 
-        <div className="carousel-track-wrapper">
+        {/* Envolvendo a área de slides com os eventos de Touch para o telemóvel */}
+        <div
+          className="carousel-track-wrapper"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div
             className="carousel-track items-center"
             onTransitionEnd={handleTransitionEnd}
             style={{
               transform: `translateX(${translateX}px)`,
-              transition: withTransition
-                ? "transform 0.5s ease-in-out"
-                : "none",
+              transition: withTransition ? "transform 0.4s ease-out" : "none",
             }}
           >
             {extendedBanners.map((banner, index) => (
@@ -138,6 +166,7 @@ export default function BannerCarousel() {
                     src={banner.image}
                     alt={banner.alt}
                     className="carousel-banner-img"
+                    draggable="false"
                   />
                 </div>
               </div>

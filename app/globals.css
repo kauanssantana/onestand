@@ -1378,7 +1378,7 @@ h6 {
 }
 
 /* =========================================
-   CARROSSEL DE BANNERS (2 ITENS CENTRALIZADOS)
+   CARROSSEL DE BANNERS 
 ========================================= */
 .carousel-section {
   position: relative;
@@ -1399,18 +1399,28 @@ h6 {
 }
 
 .carousel-container {
-  /* AUMENTADO: de 1200px para 1400px para os banners ficarem maiores */
-  max-width: 95%;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  /* Espaço exato para abrigar os botões de navegação marrons nas laterais */
-  padding: 0 70px;
+  /* NO TELEMÓVEL: Sem padding lateral para o banner ser grande */
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .carousel-container {
+    /* NO PC: Espaço de 70px nas laterais para abrigar os botões de navegação marrons */
+    padding: 0 70px;
+    width: 95%;
+  }
 }
 
 .carousel-track-wrapper {
   overflow: hidden;
   width: 100%;
+  /* Necessário para prevenir o scroll nativo do browser ao tentar deslizar o carrossel no telemóvel */
+  touch-action: pan-y;
 }
 
 .carousel-track {
@@ -1418,13 +1428,16 @@ h6 {
 }
 
 .carousel-slide {
+  /* NO TELEMÓVEL: O banner ocupa 100% da largura visível */
   flex: 0 0 100%;
-  padding: 0 12px; /* Espaço entre os dois banners */
+  padding: 0 8px; /* Ligeiro espaço lateral */
 }
 
 @media (min-width: 768px) {
   .carousel-slide {
-    flex: 0 0 33.3333%; /* Mantém exatos 2 banners por tela */
+    /* NO PC: Mantém 3 banners por tela (33.3333%) */
+    flex: 0 0 33.3333%;
+    padding: 0 12px;
   }
 }
 
@@ -1435,6 +1448,9 @@ h6 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   background-color: #ea7611;
   display: block;
+  /* Impede que a imagem "salte" e acompanhe o dedo quando o utilizador faz swipe no telemóvel */
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* --- ESTILOS DOS BOTÕES --- */
@@ -1442,12 +1458,11 @@ h6 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  /* COR ALTERADA: marrom escuro solicitado */
   background-color: #3a1010;
   color: #ffffff;
   border: none;
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1457,6 +1472,11 @@ h6 {
   /* Sombra levemente marrom para combinar */
   box-shadow: 0 6px 16px rgba(58, 16, 16, 0.3);
   transition: all 0.3s ease;
+}
+
+.carousel-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .carousel-btn:hover {
@@ -1501,7 +1521,6 @@ h6 {
   width: 32px;
   border-radius: 10px;
 }
-
 /* =========================================
    BOTÕES FLUTUANTES (WHATSAPP E TOPO)
 ========================================= */

@@ -14,7 +14,8 @@ export default function Hero() {
 
       <div className="hero-container">
         {/* COLUNA ESQUERDA (TEXTO) */}
-        <div className="hero-content relative z-20 mt-10 md:mt-0 text-center md:text-left md:-ml-[5%]">
+        {/* Removido o md:-ml-[5%] para manter o texto alinhado perfeitamente à grelha */}
+        <div className="hero-content relative z-20 mt-10 md:mt-0 text-center md:text-left">
           <ScrollReveal animation="fade-right" delay={100}>
             <h1 className="hero-title">
               Burger feito
@@ -40,17 +41,19 @@ export default function Hero() {
         </div>
 
         {/* COLUNA DIREITA (IMAGEM) */}
-        <div className="hero-image-wrapper mt-12 md:mt-0 flex w-full justify-center md:justify-end">
+        <div className="hero-image-wrapper mt-12 md:mt-0 flex w-full justify-center md:justify-end relative z-10">
           <ScrollReveal
             animation="zoom-in"
             delay={300}
-            className="flex justify-center w-full"
+            className="flex justify-center md:justify-end w-full"
           >
             <img
               src="/img/burguer-hero.png"
               alt="Hambúrguer One Stand"
-              /* MUDANÇA AQUI: No mobile usa w-[95%] e mx-auto para centrar perfeitamente */
-              className="hero-image w-[95%] max-w-[400px] mx-auto block md:w-[165%] md:max-w-[1100px] md:-mt-[10%] md:-ml-[20%] md:-mr-[45%]"
+              /* 
+                
+              */
+              className="hero-image w-[95%] max-w-[400px] mx-auto block md:mx-0 md:ml-auto md:w-[125%] md:max-w-[900px] md:-mr-[25%] md:-mt-[5%]"
             />
           </ScrollReveal>
         </div>
